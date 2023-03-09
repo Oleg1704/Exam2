@@ -29,7 +29,10 @@
 		"json-server": "*"
 	},
 	"dependencies": {
+		"@faker-js/faker": "^7.6.0",
 		"bcryptjs": "^2.4.3",
+		"cypress": "^12.7.0",
+		"json-server-auth": "^2.1.0",
 		"jsonwebtoken": "^8.5.1",
 		"yargs": "^16.2.0"
 	},
