@@ -8,7 +8,6 @@ routes.json
 # Environment variables file
 .env
 
-
 # Logs
 logs
 *.log
