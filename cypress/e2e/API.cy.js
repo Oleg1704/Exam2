@@ -81,6 +81,29 @@ describe('API Test 5', () => {
 
   before(() => {
     // Отримуємо токен доступу з API
+    it('should register a new user and verify status code and content', () => {
+    cy.request({
+      method: 'POST',
+      url: '/register',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: {
+        email: 'oleg@mail.com',
+        password: '12345',
+        firstname: 'Oleg',
+        lastname: 'Bosiuk',
+        age: 28
+      }
+    }).then((response) => {
+      expect(response.status).to.eq(200)
+      expect(response.body).to.have.property('id')
+      expect(response.body.email).to.eq('oleg@mail.com')
+      expect(response.body.firstname).to.eq('Oleg')
+      expect(response.body.lastname).to.eq('Bosiuk')
+      expect(response.body.age).to.eq(28)
+    })
+  })
     cy.request({
       method: 'POST',
       url: '/login',
@@ -88,13 +111,12 @@ describe('API Test 5', () => {
         'Content-Type': 'application/json'
       },
       body: {
-        email: 'olivier@mail.com',
-        password: 'bestPassw0rd'
+        email: 'oleg@mail.com',
+        password: '12345'
       }
     }).then((response) => {
       accessToken = response.body.accessToken
-    })
-  })
+    })})
 
   it('should create a new post and verify status code and content', () => {
     // Створюємо новий пост з використанням токена доступу
